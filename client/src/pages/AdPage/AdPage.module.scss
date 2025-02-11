@@ -1,0 +1,18 @@
+.container {
+ width: 40vw;
+ margin: 4rem auto;
+
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+img {
+    max-width: 400px;
+}
+.item_text {
+    align-self: self-start;
+}

@@ -1,0 +1,39 @@
+.container {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80vw;
+}
+
+.button_create {
+    align-self: flex-end;
+}
+
+.item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    gap: 3rem;
+    margin-top: 4rem;
+    background-color: var(--secondary-color);
+}
+
+.item_photo {
+    max-width: 200px;
+    object-fit: cover; 
+}
+
+.button_open {
+    background-color: var(--primary-color);
+    padding: 0.5rem;
+    border: none;
+    border-radius: var(--border-radius);
+}
+
+.pagination {
+    margin-top: 4rem;
+    align-self: center;
+}
