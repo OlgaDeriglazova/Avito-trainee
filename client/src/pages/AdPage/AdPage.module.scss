@@ -1,7 +1,9 @@
 .container {
  width: 40vw;
  margin: 4rem auto;
-
+ @media screen and (max-width: 768px){
+    width: 80vw;
+}
 }
 
 .item {
@@ -12,7 +14,20 @@
 
 img {
     max-width: 400px;
+    margin: 8% 0;
+    @media screen and (max-width: 768px){
+        max-width: 300px;
+    }
 }
+
 .item_text {
     align-self: self-start;
+}
+
+.button_edit {
+    margin-top: 10%;
+    width: 130px;
+    padding: 0.4rem;
+    border-radius: var(--border-radius);
+    border: 1px solid #1b1b1b;
 }

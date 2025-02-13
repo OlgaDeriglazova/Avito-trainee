@@ -1,0 +1,19 @@
+.container {
+    width: 70vw;
+    position: relative;
+
+}
+.search_input {
+    width: 100%;
+    padding-right: 30px;
+
+}
+
+.close {
+    border: none;
+    position: absolute;
+    right: 10px;
+    top: 15%;
+    cursor: pointer;
+    background-color: transparent;
+}

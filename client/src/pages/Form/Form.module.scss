@@ -1,31 +1,44 @@
 .container {
-    width: 70vw;
+    width: 80vw;
     margin: 2rem auto;
 }
 .container_title {
     display: flex;
-    gap: 5rem;
 }
 
 h1 {
     text-align: center;
+    margin-left: 4%;
 }
 
 .form {
     display: flex;
     flex-direction: column;
-    margin: 1.5rem;
+    width: 70vw;
+    margin: 3% 0  20%;
+    @media screen and (max-width: 768px){
+        width: 100vw;
+        margin-left: 10%;
+    }
 }
 
 input, textarea, select {
     background-color: var(--main-gray);
-    min-width: 200px;
     border: none;
     border-radius: var(--border-radius);
     padding: 0.5rem;
     margin: 0.3rem 0 1rem;
+    width: 70%;
 }
 
 textarea {
     resize: vertical;
+}
+
+.button_submit {
+    width: 100px;
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
+    border: 1px solid #1b1b1b;
+    cursor: pointer;
 }

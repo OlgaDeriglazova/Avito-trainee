@@ -1,5 +1,5 @@
 import React, {  useEffect, useState }  from "react";
-import Button_return from "../../components/Button_return/Button_return";
+import Button_return from "../../components/ButtonReturn/Button_return";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { API_URL } from '../../constants/api.js';
 import styles from "./AdPage.module.scss";
@@ -69,12 +69,12 @@ const AdPage = () => {
                             <p>Марка: {item.brand}</p>
                             <p>Модель: {item.model}</p>
                             <p>Год выпуска: {item.year}</p>
-                            <p>Пробег:{item.mileage}</p>
+                            <p>Пробег: {item.mileage}</p>
                             </> 
                         )}
                         {item.type === "Услуги" && (
                             <>
-                             <p>Тип услуги: {item.serviceType}</p>
+                             <p>Тип: {item.serviceType}</p>
                              <p>Опыт работы: {item.experience}</p>
                              <p>Цена: {item.cost}</p>
                              <p>График работы: {item.workSchedule}</p>
@@ -85,6 +85,7 @@ const AdPage = () => {
             </div>
             <button
                 onClick={() => navigate("/form", { state: { item } })}
+                className={styles.button_edit}
             >
                 Редактировать
             </button>

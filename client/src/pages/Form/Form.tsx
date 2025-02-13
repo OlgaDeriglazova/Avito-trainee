@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import { API_URL } from "../../constants/api";
-import Button_return from "../../components/Button_return/Button_return";
+import Button_return from "../../components/ButtonReturn/Button_return";
 import styles from "./Form.module.scss";
 
 interface Item {
@@ -28,6 +28,7 @@ interface Item {
 const Form: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const isEditing = Boolean(location.state?.item);
 
   const [form, setForm] = useState<Item>({
     name: "",
@@ -65,8 +66,9 @@ const Form: React.FC = () => {
   // Отправка данных на сервер
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     try {
-        if (location.state.item) {
+        if (isEditing) {
             await axios.put(`${API_URL}/${location.state.item.id}`, form)
         } else {
             await axios.post(API_URL, form);
@@ -77,11 +79,13 @@ const Form: React.FC = () => {
     }
   };
 
+
+
   return (
     <div className={styles.container}>
         <div className={styles.container_title}>
             <Button_return />
-            <h1>Новое объявление</h1>
+            <h1>{isEditing ? "Редактирование объявления" : "Новое объявление"}</h1>
         </div>
       <form onSubmit={handleSubmit} className={styles.form}>
             <label htmlFor="name">Название объявления</label>
@@ -119,7 +123,7 @@ const Form: React.FC = () => {
                 value={form.image} 
                 onChange={handleChange}
             />
-             <label htmlFor='type'>Выберите категорию объявления</label>
+             <label htmlFor='type'>Выберите категорию</label>
             <select 
                 id="type"
                 name="type"
@@ -141,6 +145,7 @@ const Form: React.FC = () => {
                     onChange={handleChange} 
                     required
                 >
+                    <option value="" disabled selected hidden>Выберите тип</option>
                     <option value="Квартира">Квартира</option>
                     <option value="Дом">Дом</option>
                     <option value="Коттедж">Коттедж</option>
@@ -190,6 +195,7 @@ const Form: React.FC = () => {
                     onChange={handleChange} 
                     required 
                 >
+                    <option value="" disabled selected hidden>Выберите марку</option>
                     <option value="Audi">Audi</option>
                     <option value="BMW">BMW</option>
                     <option value="Changan">Changan</option>
@@ -270,7 +276,7 @@ const Form: React.FC = () => {
             </>
             )}
 
-        <button type="submit">Создать</button>
+        <button type="submit" className={styles.button_submit}>{isEditing ? "Обновить" : "Создать"}</button>
       </form>
     </div>
   );

@@ -1,0 +1,26 @@
+.item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem;
+    margin-top: 4rem;
+    background-color: var(--secondary-color);
+    min-width: 200px;
+    @media screen and (max-width: 768px){
+        flex-direction: column;
+    }
+}
+
+.item_photo {
+    width: 200px;
+    object-fit: cover; 
+}
+
+.button_open {
+    width: 100px;
+    padding: 0.4rem;
+    border-radius: var(--border-radius);
+    border: 1px solid #1b1b1b;
+    background-color: rgb(232, 254, 255);
+}
