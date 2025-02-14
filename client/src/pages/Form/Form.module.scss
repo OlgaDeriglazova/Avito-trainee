@@ -42,3 +42,10 @@ textarea {
     border: 1px solid #1b1b1b;
     cursor: pointer;
 }
+.error {
+    display: block;
+    width: 60%;
+    background-color: rgb(255, 255, 208);
+    border: 1px solid #c6531a;
+    border-radius: var(--border-radius);
+}

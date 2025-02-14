@@ -30,13 +30,26 @@ const ListAds: React.FC<ListAdsProps> = () => {
 
     // Загрузка данных с сервера
     useEffect(() => {
-        fetch(API_URL)
+        const controller = new AbortController();
+        const signal = controller.signal;
+
+        fetch(API_URL, { signal })
             .then((res) => res.json())
             .then((data) => {
                 console.log('Данные с сервера:', data);
                 setItems(data)})
-            .catch((error) => console.error(error))
-    }, [])
+            .catch((error) => {
+                if (error.name === "AbortError") {
+                    console.log("Запрос был отменён:", error.message);
+                } else {
+                 console.error("Ошибка загрузки:", error);
+                }
+            });
+            
+        return () => {
+            controller.abort();
+        };
+    }, []);
 
     // Фильтрация по категории
     const filteredItems = selectedCategory
