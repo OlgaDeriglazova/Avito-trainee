@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import validationSchema from "../../components/Validation/Validation"
@@ -41,7 +41,7 @@ const Form: React.FC = () => {
     watch,
     formState: { errors }
 } = useForm<Item>({
-    resolver: yupResolver(validationSchema) as Resolver<Item>, // Приведение типов
+    resolver: yupResolver(validationSchema) as Resolver<Item>,
 });
 
   const selectedType = watch("type");
@@ -106,8 +106,9 @@ const Form: React.FC = () => {
              <label htmlFor="image">Фотография</label>
             <input
                 id="image"
-                type="string"
+                type="text"
                 name="image"
+                placeholder="Ссылка на картинку/фото" 
                 {...register("image")}
             />
             {errors.image && <p className={styles.error}>{errors.image.message}</p>}

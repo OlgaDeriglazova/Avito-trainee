@@ -14,7 +14,7 @@ const validationSchema = yup.object({
         .oneOf(["Недвижимость", "Авто", "Услуги"], "Выберите корректный тип объявления")
         .required("Выбор типа объявления обязательно"),
     image: yup.string()
-        .url("Некорректная ссылка на изображение")
+        //.url("Некорректная ссылка на изображение")
         .nullable()
         .notRequired(),
 
@@ -54,7 +54,6 @@ const validationSchema = yup.object({
     brand: yup.string().when("type", {
         is: "Авто",
         then: schema => schema
-            .min(3, "Минимум 3 символа")
             .required("Выбор марки обязателен"),
         otherwise: schema => schema.nullable().notRequired()
     }),
