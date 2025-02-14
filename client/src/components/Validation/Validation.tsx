@@ -1,7 +1,7 @@
 import * as yup from "yup";
-import { Item } from "../types/types";
 
-const validationSchema: yup.ObjectSchema<Item> = yup.object().shape({
+const validationSchema = yup.object({
+    // Общие поля
     name: yup.string()
         .min(3, "Минимум 3 символа")
         .required("Название обязательно"),
@@ -81,7 +81,7 @@ const validationSchema: yup.ObjectSchema<Item> = yup.object().shape({
         .min(0, "Пробег не может быть отрицательным")
         .nullable()
         .notRequired(),
-        
+
     // поля для услуг
     serviceType: yup.string().when("type", {
         is: "Услуги",

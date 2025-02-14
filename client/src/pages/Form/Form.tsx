@@ -1,15 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import validationSchema from "../../components/Validation/Validation"
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Resolver } from "react-hook-form";
-import { Item } from "../../components/types/types";
-import * as yup from "yup";
 import { API_URL } from "../../constants/api";
 import Button_return from "../../components/ButtonReturn/Button_return";
 import styles from "./Form.module.scss";
+
+interface Item {
+    name: string;
+    description: string;
+    location: string;
+    type: "Недвижимость" | "Авто" | "Услуги";
+    image?: string;
+    propertyType?: string;
+    area?: number;
+    rooms?: number;
+    price?: number;
+    brand?: string;
+    model?: string;
+    year?: number;
+    mileage?: number;
+    serviceType?: string;
+    experience?: number;
+    cost?: number;
+    workSchedule?: string;
+}
 
 const Form: React.FC = () => {
   const navigate = useNavigate();
