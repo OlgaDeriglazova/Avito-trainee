@@ -34,10 +34,12 @@ const Form: React.FC = () => {
   const location = useLocation();
   const isEditing = Boolean(location.state?.item);
 
+// Валидация
   const {
     register,
     handleSubmit,
     setValue,
+    getValues,
     watch,
     formState: { errors }
 } = useForm<Item>({
@@ -45,6 +47,17 @@ const Form: React.FC = () => {
 });
 
   const selectedType = watch("type");
+
+//Загрузка данных из localStoreage
+  useEffect(() => {
+    const savedDraft = localStorage.getItem("formDraft")
+    if (savedDraft) {
+        const draftData = JSON.parse(savedDraft);
+        Object.keys(draftData).forEach((key) => {
+            setValue(key as keyof Item, draftData[key])
+        })
+    }
+  }, [setValue]);
 
 // Заполнение данных при редактировании
   useEffect(() => {
@@ -55,6 +68,14 @@ const Form: React.FC = () => {
         }
   }, [location.state, setValue])
 
+  // Сохранение черновика
+  useEffect(() => {
+    const interval = setInterval(() => {
+        localStorage.setItem("formDraft", JSON.stringify(getValues()))
+    }, 1000)
+    return () => clearInterval(interval);
+  }, [getValues])
+
   // Отправка данных на сервер
   const onSubmit = async (data: Item) => {
     try {
@@ -63,6 +84,7 @@ const Form: React.FC = () => {
         } else {
             await axios.post(API_URL, data);
         }
+      localStorage.removeItem("formDraft");
       navigate("/list");
     } catch (error) {
       alert("Ошибка при создании объявления");
@@ -184,12 +206,32 @@ const Form: React.FC = () => {
                 >
                     <option value="" disabled selected hidden>Выберите марку</option>
                     <option value="Audi">Audi</option>
+                    <option value="Alfa Romeo">Alfa Romeo</option>
                     <option value="BMW">BMW</option>
                     <option value="Changan">Changan</option>
                     <option value="Chery">Chery</option>
                     <option value="Chevrolet">Chevrolet</option>
+                    <option value="Citroen">Citroen</option>
+                    <option value="Dacia">Dacia</option>
                     <option value="Daewo">Daewo</option>
+                    <option value="Ferrari">Ferrari</option>
+                    <option value="Fiat">Fiat</option>
                     <option value="Ford">Ford</option>
+                    <option value="Haval">Haval</option>
+                    <option value="Honda">Honda</option>
+                    <option value="Hyundai">Hyundai</option>
+                    <option value="Infiniti">Infiniti</option>
+                    <option value="Isuzu">Isuzu</option>
+                    <option value="Jeep">Jeep</option>
+                    <option value="Kia">Kia</option>
+                    <option value="Lamborghini">Lamborghini</option>
+                    <option value="Mazda">Mazda</option>
+                    <option value="Nissan">Nissan</option>
+                    <option value="Opel">Opel</option>
+                    <option value="Renault">Renault</option>
+                    <option value="Subaru">Subaru</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Другое">Другое</option>
                 </select>
                 {errors.brand && <p className={styles.error}>{errors.brand.message}</p>}
             <label htmlFor="model">Модель</label>
