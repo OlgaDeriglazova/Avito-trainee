@@ -16,7 +16,7 @@
 npm install
 
 ## Запуск проекта 
-- npm start (клиентская часть и сервер отдельно)
+- серверная часть: npm start; клиентская: PORT=3001 npm start
 - с помощью docker compose (docker compose build, затем docker compose up)
 
 ## Маршрутизация

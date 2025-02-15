@@ -1,9 +1,8 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import arrowIcon from "../../assets/arrow.svg";
-import styles from "./Button_return.module.scss";
+import styles from "./ButtonReturn.module.scss";
 
-const Button_return = () => {
+const ButtonReturn = () => {
     const navigate = useNavigate();
     return(
             <button
@@ -15,6 +14,7 @@ const Button_return = () => {
             </button>
     )
 }
-export default Button_return;
+
+export default ButtonReturn;
 
 

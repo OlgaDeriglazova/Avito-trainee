@@ -4,9 +4,7 @@ import { API_URL } from '../../constants/api.js';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import CategoryFilter from "../../components/CategoryFilter/CategoryFilter"
 import Ads from '../../components/Ads/Ads';
-
 import styles from './ListAds.module.scss';
-
 
 interface Item {
     id: number;
@@ -36,11 +34,9 @@ const ListAds: React.FC<ListAdsProps> = () => {
         fetch(API_URL, { signal })
             .then((res) => res.json())
             .then((data) => {
-                console.log('Данные с сервера:', data);
                 setItems(data)})
             .catch((error) => {
                 if (error.name === "AbortError") {
-                    console.log("Запрос был отменён:", error.message);
                 } else {
                  console.error("Ошибка загрузки:", error);
                 }
@@ -57,7 +53,7 @@ const ListAds: React.FC<ListAdsProps> = () => {
         : items;
     
      // Поиск по названию
-     const searchedAds = searchItem
+    const searchedAds = searchItem
         ? filteredItems.filter((item) => item.name.toLowerCase().includes(searchItem.toLowerCase()))
         : filteredItems;
 

@@ -1,9 +1,9 @@
 .container {
- width: 40vw;
- margin: 4rem auto;
- @media screen and (max-width: 768px){
-    width: 80vw;
-}
+    width: 40vw;
+    margin: 4rem auto;
+    @media screen and (max-width: 768px){
+        width: 80vw;
+    }
 }
 
 .item {

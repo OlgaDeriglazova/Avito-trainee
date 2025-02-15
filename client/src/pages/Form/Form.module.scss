@@ -2,6 +2,7 @@
     width: 80vw;
     margin: 2rem auto;
 }
+
 .container_title {
     display: flex;
 }
@@ -21,9 +22,11 @@ h1 {
         margin-left: 10%;
     }
 }
+
 label {
     margin-top: 1rem;
 }
+
 input, textarea, select {
     background-color: var(--main-gray);
     border: none;
@@ -45,6 +48,7 @@ textarea {
     cursor: pointer;
     margin-top: 1rem;
 }
+
 .error {
     color: red;
     font-size: 14px;

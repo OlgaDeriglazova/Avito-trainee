@@ -1,6 +1,7 @@
 import * as yup from "yup";
 
 const validationSchema = yup.object({
+
     // Общие поля
     name: yup.string()
         .min(3, "Минимум 3 символа")
@@ -14,7 +15,7 @@ const validationSchema = yup.object({
         .oneOf(["Недвижимость", "Авто", "Услуги"], "Выберите корректный тип объявления")
         .required("Выбор типа объявления обязательно"),
     image: yup.string()
-        //.url("Некорректная ссылка на изображение")
+        .url("Некорректная ссылка на изображение")
         .nullable()
         .notRequired(),
 
@@ -25,12 +26,12 @@ const validationSchema = yup.object({
         otherwise: schema => schema.notRequired()
     }),
     area: yup.number().when("type", {
-            is: "Недвижимость",
-            then: schema => schema
-                .typeError("Площадь должна быть числом")
-                .positive("Площадь должна быть положительным числом")
-                .required("Площадь обязательна"),
-            otherwise: schema => schema.nullable().notRequired()
+        is: "Недвижимость",
+        then: schema => schema
+            .typeError("Площадь должна быть числом")
+            .positive("Площадь должна быть положительным числом")
+            .required("Площадь обязательна"),
+        otherwise: schema => schema.nullable().notRequired()
     }),
     rooms: yup.number().when("type", {
         is: "Недвижимость",
@@ -114,4 +115,5 @@ const validationSchema = yup.object({
             .notRequired(),
     })
 });
+
 export default validationSchema;

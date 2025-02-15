@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Ads from "../Ads/Ads";
 import styles from './SearchBar.module.scss';
 import CloseIcon from "../../assets/close.svg";
 
@@ -9,7 +8,7 @@ interface Item {
     image?: string;
     location: string;
     type: "Недвижимость" | "Авто" | "Услуги";
-  }
+}
 
 interface SearchBarProps {
     items: Item[]; 

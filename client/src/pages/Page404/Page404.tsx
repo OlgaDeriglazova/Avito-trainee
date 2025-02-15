@@ -2,7 +2,7 @@ import React  from "react";
 
 const Page404 = () => {
     return (
-        <h1>Маршрут не найден</h1>
+        <h1>Страница не найдена</h1>
         
     )
 }

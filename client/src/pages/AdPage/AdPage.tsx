@@ -1,9 +1,8 @@
 import React, {  useEffect, useState }  from "react";
-import Button_return from "../../components/ButtonReturn/Button_return";
+import ButtonReturn from "../../components/ButtonReturn/ButtonReturn";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { API_URL } from '../../constants/api.js';
 import styles from "./AdPage.module.scss";
-
 
 interface Item {
     name: string;
@@ -23,7 +22,7 @@ interface Item {
     experience?: number;
     cost?: number;
     workSchedule?: string;
-  }
+}
 
 const AdPage = () => {
     const { id } = useParams<{ id: string}>();
@@ -48,7 +47,7 @@ const AdPage = () => {
 
     return (
         <div className={styles.container}>
-            <Button_return />
+            <ButtonReturn />
             <div className={styles.item}>
                 <img src={item.image || "https://www.laser-bulat.ru/upload/medialibrary/735/2lj6sel8ygv8p6j2xj85gplt9ufd5xpn.png" } alt='Фото' className={styles.item_photo} />
                     <div className={styles.item_text}>
@@ -92,4 +91,5 @@ const AdPage = () => {
         </div>
     )
 }
+
 export default AdPage;

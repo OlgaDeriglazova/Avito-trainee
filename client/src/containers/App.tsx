@@ -1,6 +1,5 @@
 import React from 'react';
 import { Routes, Route, Navigate} from 'react-router-dom';
-
 import Form from '../pages/Form/Form';
 import ListAds from '../pages/ListAds/ListAds';
 import AdPage from '../pages/AdPage/AdPage';
