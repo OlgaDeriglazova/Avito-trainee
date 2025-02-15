@@ -68,7 +68,7 @@ const Form: React.FC = () => {
         }
   }, [location.state, setValue])
 
-  // Сохранение черновика
+  // Автосохранение черновика каждую секунду
   useEffect(() => {
     const interval = setInterval(() => {
         localStorage.setItem("formDraft", JSON.stringify(getValues()))
