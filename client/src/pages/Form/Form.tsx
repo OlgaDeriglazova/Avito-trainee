@@ -254,7 +254,7 @@ const Form: React.FC = () => {
                         name="year" 
                         {...register("year")}
                     />
-                    {errors.year && <p>{errors.year.message}</p>}
+                    {errors.year && <p className={styles.error}>{errors.year.message}</p>}
 
                     <label htmlFor="mileage">Пробег</label>
                     <input 
@@ -298,7 +298,7 @@ const Form: React.FC = () => {
                         placeholder="руб" 
                         {...register("cost")} 
                     />
-                    {errors.cost && <p>{errors.cost.message}</p>}
+                    {errors.cost && <p className={styles.error}>{errors.cost.message}</p>}
                     
                     <label htmlFor="workSchedule">График работы</label>
                     <input 
